@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   so_long_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlerma-c <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dlerma-c <dlerma-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/29 11:12:12 by dlerma-c          #+#    #+#             */
-/*   Updated: 2021/07/29 11:12:17 by dlerma-c         ###   ########.fr       */
+/*   Created: 2021/11/02 19:03:39 by dlerma-c          #+#    #+#             */
+/*   Updated: 2021/11/02 19:09:29 by dlerma-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include<so_long.h>
 
-void	*ft_memset(void *b, int c, size_t len)
+void	print_error(char *mssg)
 {
-	unsigned int		i;
-	char				*str;
-
-	i = -1;
-	str = b;
-	while (++i < len)
-		str[i] = c;
-	return (b);
+	write(1, "ERROR\n", 6);
+	write(1, mssg, ft_strlen(mssg));
+	exit(0);
 }

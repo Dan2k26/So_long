@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dlerma-c <dlerma-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/02 19:03:47 by dlerma-c          #+#    #+#             */
-/*   Updated: 2021/11/02 19:03:50 by dlerma-c         ###   ########.fr       */
+/*   Created: 2021/08/23 20:15:32 by dlerma-c          #+#    #+#             */
+/*   Updated: 2021/11/02 18:36:04 by dlerma-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<so_long.h>
+#include"libft.h"
 
-int	main(int argc, char **argv)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	if (argc == 2)
-		check_argument(argv[1]);
-	//si el mapa es incorrecto
-	/*if (check_map() != 0)
-		printf("ERROR\n");
-	else
-		printf("GOOD\n");*/
+	new->next = *lst;
+	*lst = new;
 }

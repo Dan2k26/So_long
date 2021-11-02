@@ -14,26 +14,26 @@ LBFT_PATH = lbft
 #···································································#
 # flags librerias
 # ruta .a
-LDFLAGS = -L $(LFT_DIR)
+LDFLAGS = -L $(LBFT_PATH)
 
 # nombre lib
 LDLIBS = -lft
 #···································································#
 #                               SRCS                                #
 #···································································#
-SRCS = main.c check_errors.c
+SRCS = main.c check_errors.c so_long_utils.c
 OBJS_NAME = $(SRCS:%.c=%.o)
 OBJS = $(addprefix $(OBJ_PATH)/, $(OBJS_NAME))
 #···································································#
 #                              FLAGS                                #
 #···································································#
 CC = gcc
-CFLAGS = -Wall -Wextra -g3
+CFLAGS = -Wall -Werror -Wextra -g3
 #include <xx.h> // path of .h
 CFLAGS += -I $(INC_PATH) -I $(LBFT_PATH)
 #if you make with dev, it will include fsanitize
-DEV = N
-ifeq ($(DEV), Y)
+DEV = 0
+ifeq ($(DEV), 1)
 	CFLAGS += -fsanitize=address
 endif
 #···································································#
@@ -44,10 +44,10 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	make -C $(LBFT_PATH)
-	$(CC) $^ -o $@ $(CFLAGS)
+	$(CC) $^ -o $@ $(CFLAGS) $(LDFLAGS) $(LDLIBS)
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
-	$(CC) $(CFLAGS) -c $< -o $@ 
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJS): | $(OBJ_PATH)
 

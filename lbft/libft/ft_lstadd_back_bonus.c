@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dlerma-c <dlerma-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/02 19:03:47 by dlerma-c          #+#    #+#             */
-/*   Updated: 2021/11/02 19:03:50 by dlerma-c         ###   ########.fr       */
+/*   Created: 2021/08/24 13:40:51 by dlerma-c          #+#    #+#             */
+/*   Updated: 2021/10/19 17:26:59 by dlerma-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<so_long.h>
+#include"libft.h"
 
-int	main(int argc, char **argv)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	if (argc == 2)
-		check_argument(argv[1]);
-	//si el mapa es incorrecto
-	/*if (check_map() != 0)
-		printf("ERROR\n");
-	else
-		printf("GOOD\n");*/
+	t_list	*aux;
+
+	if (*lst == NULL)
+		*lst = new;
+	else if (*lst)
+	{
+		aux = ft_lstlast(*lst);
+		aux->next = new;
+	}
 }

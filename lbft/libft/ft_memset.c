@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlerma-c <dlerma-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dlerma-c <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/29 11:48:57 by dlerma-c          #+#    #+#             */
-/*   Updated: 2021/08/22 14:51:21 by dlerma-c         ###   ########.fr       */
+/*   Created: 2021/07/29 11:12:12 by dlerma-c          #+#    #+#             */
+/*   Updated: 2021/07/29 11:12:17 by dlerma-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	size_t		i;
-	char		*str;
-	const char	*s;
+	unsigned int		num;
+	unsigned int		i;
+	char				*str;
 
 	i = -1;
-	str = dst;
-	s = src;
-	if (dst == NULL && src == NULL)
-		return (NULL);
-	while (++i < n)
-		str[i] = s[i];
-	return (str);
+	num = sizeof(b);
+	str = b;
+	while (++i < len)
+		str[i] = c;
+	return (b);
 }

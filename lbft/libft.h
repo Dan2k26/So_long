@@ -6,15 +6,17 @@
 /*   By: dlerma-c <dlerma-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/02 16:39:05 by dlerma-c          #+#    #+#             */
-/*   Updated: 2021/09/15 17:05:04 by dlerma-c         ###   ########.fr       */
+/*   Updated: 2021/11/02 19:44:01 by dlerma-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef LIBFT_H
 
 # define LIBFT_H
 # include <stdlib.h>
 # include <unistd.h>
+# include "gnl/get_next_line.h"
 
 typedef struct s_list
 {
@@ -56,6 +58,8 @@ char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
+
+char	**ft_free_malloc(char **str);
 
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
