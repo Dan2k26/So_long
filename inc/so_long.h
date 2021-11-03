@@ -8,6 +8,13 @@
 # include <fcntl.h>
 # include <unistd.h>
 
+typedef struct s_map
+{
+    int nrows;
+    int nchars;
+}   t_map;
+
+
 //CHECK_ERRORS
 int		check_argument(char *argv);
 void	check_map(int fd);

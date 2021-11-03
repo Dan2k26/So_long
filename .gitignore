@@ -4,3 +4,5 @@
 **/._.DS_Store
 /obj
 makefile.txt
+so_long
+*.o

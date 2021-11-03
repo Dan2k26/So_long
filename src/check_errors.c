@@ -6,59 +6,59 @@
 /*   By: dlerma-c <dlerma-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 19:03:43 by dlerma-c          #+#    #+#             */
-/*   Updated: 2021/11/03 21:01:26 by dlerma-c         ###   ########.fr       */
+/*   Updated: 2021/11/03 21:25:31 by dlerma-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <so_long.h>
 
-static void	check_walls(char **map, int nrows)
-{
-	int	i;
-	size_t	len;
+// static void	check_walls(char **map, int nrows)
+// {
+// 	int	i;
+// 	size_t	len;
 
-	i = 0;
-	len = ft_strlen(map[i]);
-	printf("%s", map[i]);
-	while (i < nrows - 1)
-	{
-		if (len != ft_strlen(map[i]))
-		{
-			printf("%d   %zd    %s\n", i,len, map[i]);
-			exit(0);
-		}
-		len = ft_strlen(map[i]);
-		i++;
-	}
-	if (ft_strlen(map[nrows - 1]) != len - 1)
-			print_error("MAPA ULTIMA FILA\n");
-	printf("lololollolol");
-}
+// 	i = 0;
+// 	len = ft_strlen(map[i]);
+// 	printf("%s", map[i]);
+// 	while (i < nrows - 1)
+// 	{
+// 		if (len != ft_strlen(map[i]))
+// 		{
+// 			printf("%d   %zd    %s\n", i,len, map[i]);
+// 			exit(0);
+// 		}
+// 		len = ft_strlen(map[i]);
+// 		i++;
+// 	}
+// 	if (ft_strlen(map[nrows - 1]) != len - 1)
+// 			print_error("MAPA ULTIMA FILA\n");
+// 	printf("lololollolol");
+// }
 
 void	check_map(int fd)
 {
-	char	*file;
-	char	**map;
+	t_map	map;
+	char	*line;
+	//char	*temp;
 	int		i;
 
+	line = get_next_line(fd);
+	if (line == NULL)
+		print_error("ARCHIVO VACIO\n");
+	map.nchars = ft_strlen(line) - 1;
 	i = 0;
-	map = ft_calloc(4,sizeof(char));
-	if (map == NULL)
-		exit(0);
-	file = get_next_line(fd);
-	while (file)
-	{
-		map[i] = ft_strdup(file);
-		if (map[i] == NULL)
-		{
-			ft_free_malloc(map);
-			exit(0);
-		}
-		free(file);
-		file = get_next_line(fd);
+	while (line)
+	{	
+		free(line);
+		line = get_next_line(fd);
 		i++;
 	}
-	check_walls(map, i);
+	map.nrows = i;
+
+	printf("NROWS %d     NCHARS  %d\n", map.nrows, map.nchars);
+
+
+
 	//ft_free_malloc(map);
 	//Comprobar que la primera y ultima filas son de 1
 
