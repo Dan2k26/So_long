@@ -6,7 +6,7 @@
 /*   By: dlerma-c <dlerma-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/02 16:39:05 by dlerma-c          #+#    #+#             */
-/*   Updated: 2021/11/02 19:44:01 by dlerma-c         ###   ########.fr       */
+/*   Updated: 2021/11/03 15:36:24 by dlerma-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define LIBFT_H
 # include <stdlib.h>
 # include <unistd.h>
-# include "gnl/get_next_line.h"
+# include "get_next_line.h"
 
 typedef struct s_list
 {

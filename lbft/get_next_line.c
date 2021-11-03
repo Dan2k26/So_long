@@ -6,7 +6,7 @@
 /*   By: dlerma-c <dlerma-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 14:09:52 by dlerma-c          #+#    #+#             */
-/*   Updated: 2021/09/20 18:14:08 by dlerma-c         ###   ########.fr       */
+/*   Updated: 2021/11/03 17:11:48 by dlerma-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static char	*assign_chars(char *aux)
 	y = -1;
 	while (aux[i] != '\n' && aux[i] != '\0')
 		i++;
-	str = ft_substr(aux, 0, i + 1);
+	str = ft_substr_gnl(aux, 0, i + 1);
 	return (str);
 }
 
@@ -34,7 +34,7 @@ static char	*read_line(int size, int fd, char *buff, char **str)
 	{
 		buff[size] = '\0';
 		aux = *str;
-		*str = ft_strjoin(aux, buff);
+		*str = ft_strjoin_gnl(aux, buff);
 		if (str == NULL)
 			return (NULL);
 		free(aux);
@@ -55,7 +55,7 @@ static char	*check_next_line(char **str, char **remainder)
 	if (ft_strchr(*str, '\n') != NULL)
 	{
 		aux = *remainder;
-		*remainder = ft_strdup(ft_strchr(*str, '\n') + 1);
+		*remainder = ft_strdup_gnl(ft_strchr(*str, '\n') + 1);
 		if (remainder == NULL)
 			return (NULL);
 		free(aux);
@@ -73,7 +73,7 @@ static int	checking(char **remainder, ssize_t size, char **buff)
 		*remainder = malloc(sizeof(char) * BUFFER_SIZE + 1);
 		if (*remainder == NULL)
 			return (0);
-		ft_cleanlen("\0", 1, *remainder, BUFFER_SIZE + 1);
+		ft_cleanlen_gnl("\0", 1, *remainder, BUFFER_SIZE + 1);
 	}
 	if (size == -1 || (size == 0 && *remainder[0] == '\0'))
 	{
@@ -95,7 +95,7 @@ char	*get_next_line(int fd)
 	buff = malloc(sizeof(char) * BUFFER_SIZE + 1);
 	if (buff == NULL)
 		return (NULL);
-	ft_cleanlen("\0", 1, buff, BUFFER_SIZE + 1);
+	ft_cleanlen_gnl("\0", 1, buff, BUFFER_SIZE + 1);
 	if (read(fd, buff, 0) == -1 || BUFFER_SIZE < 1 || fd < 0 )
 	{
 		free(buff);
@@ -104,10 +104,10 @@ char	*get_next_line(int fd)
 	size = read(fd, buff, BUFFER_SIZE);
 	if (checking(&remainder, size, &buff) == 0)
 		return (NULL);
-	str = ft_strdup((char *)remainder);
+	str = ft_strdup_gnl((char *)remainder);
 	if (str == NULL)
 		return (NULL);
-	ft_cleanlen("\0", 1, remainder, ft_cleanlen(remainder, 0, 0, 0));
+	ft_cleanlen_gnl("\0", 1, remainder, ft_cleanlen_gnl(remainder, 0, 0, 0));
 	str = read_line(size, fd, buff, &str);
 	return (check_next_line(&str, &remainder));
 }

@@ -9,7 +9,8 @@
 # include <unistd.h>
 
 //CHECK_ERRORS
-void	check_argument(char *argv);
+int		check_argument(char *argv);
+void	check_map(int fd);
 //UTILS
 void	print_error(char *mssg);
 #endif
