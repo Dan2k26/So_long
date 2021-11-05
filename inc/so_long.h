@@ -8,22 +8,15 @@
 # include <fcntl.h>
 # include <unistd.h>
 
-typedef struct	s_objects
-{
-	int	colect;
-	int	character;
-	int	exit;
-	int	floor;
-	int	wall;
-}	t_objects;
-
-
 typedef struct	s_map
 {
-	size_t		nrows;
-	size_t		nchars;
-	char		**file;
-	t_objects	objects;
+	size_t	nrows;
+	size_t	nchars;
+	char	**file;
+	int		collect;
+	int		character;
+	int		exit;
+	int		floor;
 }	t_map;
 
 
