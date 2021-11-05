@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dlerma-c <dlerma-c@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/05 19:13:33 by dlerma-c          #+#    #+#             */
+/*   Updated: 2021/11/05 19:34:26 by dlerma-c         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
 
 # define SO_LONG_H
@@ -8,21 +20,25 @@
 # include <fcntl.h>
 # include <unistd.h>
 
-typedef struct	s_map
+typedef struct s_objects
 {
-	size_t	nrows;
-	size_t	nchars;
-	char	**file;
-	int		collect;
-	int		character;
-	int		exit;
-	int		floor;
+	int	collect;
+	int	character;
+	int	exit;
+	int	floor;
+}	t_objects;
+
+typedef struct s_map
+{
+	size_t		nrows;
+	size_t		nchars;
+	char		**file;
+	t_objects	objects;
 }	t_map;
 
-
-//CHECK_ERRORS
 int		check_argument(char *argv);
-void	check_map(int fd);
+void	check_map(int fd, t_map *map);
+void	save_map(int fd, t_map *map);
 //UTILS
 void	print_error(char *mssg);
 #endif

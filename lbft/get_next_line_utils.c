@@ -6,7 +6,7 @@
 /*   By: dlerma-c <dlerma-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 20:51:37 by dlerma-c          #+#    #+#             */
-/*   Updated: 2021/11/03 17:12:14 by dlerma-c         ###   ########.fr       */
+/*   Updated: 2021/11/05 19:11:40 by dlerma-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ char	*ft_strdup_gnl(const char *s1)
 	str[num] = '\0';
 	return (str);
 }
-
 
 char	*ft_substr_gnl(char const *s, unsigned int start, size_t len)
 {
