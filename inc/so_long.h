@@ -6,7 +6,7 @@
 /*   By: dlerma-c <dlerma-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 19:13:33 by dlerma-c          #+#    #+#             */
-/*   Updated: 2021/11/05 19:34:26 by dlerma-c         ###   ########.fr       */
+/*   Updated: 2021/11/08 14:00:23 by dlerma-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <libft.h>
 # include <fcntl.h>
 # include <unistd.h>
+# include <mlx.h>
 
 typedef struct s_objects
 {
@@ -41,4 +42,7 @@ void	check_map(int fd, t_map *map);
 void	save_map(int fd, t_map *map);
 //UTILS
 void	print_error(char *mssg);
+//OBJS
+void	init_objs(t_map *map);
+void	check_objects(char letter, t_objects *objects);
 #endif

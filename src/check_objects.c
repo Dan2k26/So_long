@@ -1,38 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   check_objects.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dlerma-c <dlerma-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/02 19:03:47 by dlerma-c          #+#    #+#             */
-/*   Updated: 2021/11/08 15:39:31 by dlerma-c         ###   ########.fr       */
+/*   Created: 2021/11/08 13:57:12 by dlerma-c          #+#    #+#             */
+/*   Updated: 2021/11/08 13:59:26 by dlerma-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<so_long.h>
+#include <so_long.h>
 
-void	check_leaks(void)
+void	init_objs(t_map *map)
 {
-	system("leaks -q so_long");
+	map->objects.collect = 0;
+	map->objects.character = 0;
+	map->objects.exit = 0;
+	map->objects.floor = 0;
 }
 
-int	main(int argc, char **argv)
+void	check_objects(char letter, t_objects *objects)
 {
-	int		fd;
-	t_map	map;
-	
-	atexit(check_leaks);
-	if (argc == 2)
-	{
-		fd = check_argument(argv[1]);
-		check_map(fd, &map);
-		close(fd);
-		fd = check_argument(argv[1]);
-		save_map(fd, &map);
-		close(fd);
-	}
-	else
-		print_error("ARGUMENTOS MAL INTRODUCIDOS\n");
-	return (0);
+	if (letter == 'C')
+		objects->collect++;
+	if (letter == 'P')
+		objects->character++;
+	if (letter == 'E')
+		objects->exit++;
+	if (letter == '0')
+		objects->floor++;
 }

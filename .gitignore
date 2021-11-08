@@ -6,3 +6,4 @@
 makefile.txt
 so_long
 *.o
+*.a

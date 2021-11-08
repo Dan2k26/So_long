@@ -28,7 +28,7 @@ LDLIBS = -lft
 #                               SRCS                                #
 #···································································#
 
-SRCS = main.c check_errors.c so_long_utils.c
+SRCS = main.c check_errors.c so_long_utils.c check_objects.c
 OBJS_NAME = $(SRCS:%.c=%.o)
 OBJS = $(addprefix $(OBJ_PATH)/, $(OBJS_NAME))
 
@@ -51,7 +51,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	make -C $(LBFT_PATH)
-	$(CC) $^ -o $@ $(CFLAGS) $(LDFLAGS) $(LDLIBS)
+	$(CC) $^ -o $@ $(CFLAGS) $(LDFLAGS) $(LDLIBS) -lmlx -framework OpenGL -framework AppKit
 
 debug: CFLAGS += -fsanitize=address -g3
 debug: $(NAME)

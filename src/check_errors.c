@@ -6,23 +6,11 @@
 /*   By: dlerma-c <dlerma-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 19:03:43 by dlerma-c          #+#    #+#             */
-/*   Updated: 2021/11/05 20:38:26 by dlerma-c         ###   ########.fr       */
+/*   Updated: 2021/11/08 13:58:54 by dlerma-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <so_long.h>
-
-static void	check_objects(char letter, t_objects *objects)
-{
-	if (letter == 'C')
-		objects->collect++;
-	if (letter == 'P')
-		objects->character++;
-	if (letter == 'E')
-		objects->exit++;
-	if (letter == '0')
-		objects->floor++;
-}
 
 static void	objs_and_square(char *line, size_t len, t_map *map)
 {
@@ -45,14 +33,6 @@ static void	objs_and_square(char *line, size_t len, t_map *map)
 		print_error("MAPA NO VÁLIDO\n");
 }
 
-static void	init_objs(t_map *map)
-{
-	map->objects.collect = 0;
-	map->objects.character = 0;
-	map->objects.exit = 0;
-	map->objects.floor = 0;
-}
-
 void	check_map(int fd, t_map *map)
 {
 	char	*line;
@@ -63,7 +43,7 @@ void	check_map(int fd, t_map *map)
 		print_error("ARCHIVO VACIO\n");
 	init_objs(map);
 	map->nchars = ft_strlen(line) - 1;
-	i = 2;
+	i = 1;
 	while (line)
 	{	
 		objs_and_square(line, map->nchars, map);
@@ -71,9 +51,9 @@ void	check_map(int fd, t_map *map)
 		line = get_next_line(fd);
 		i++;
 	}
-	map->nrows = i;
+	map->nrows = i - 1;
 	if (map->objects.floor == 0 || map->objects.character != 1
-		|| map->objects.exit != 1)
+		|| map->objects.exit != 1 || map->objects.collect < 1)
 		print_error("HAS METIDO OBJETOS DE MAS\n");
 }
 
@@ -98,23 +78,23 @@ void	save_map(int fd, t_map *map)
 	int		i;
 		
 	line = get_next_line(fd);
-	if (line == NULL)
-		print_error("ARCHIVO VACIO\n");
-	archive = ft_calloc(map->nrows, sizeof(char));
+	archive = malloc(map->nrows * sizeof(char *));
 	if (archive == NULL)
 		print_error("CALLOC ES NULO\n");
-	i = 2;
+	i = -1;
 	while (line)
 	{	
 		if (line != NULL)
 		{
-			archive[i] = line;
-
-			printf("%s", archive[i]);
+			archive[++i] = ft_strdup(line);
+			if (archive[i] == NULL)
+				print_error("ARCHIVE MAL\n");
 		}
 		free(line);
 		line = get_next_line(fd);
-		i++;
 	}
-	
+	i = -1;
+	while (++i < (int)map->nchars)
+		if (archive[0][i] != '1' || archive[map->nrows - 1][i] != '1')
+			print_error("EL PRIMERO O EL ULTIMO\n");
 }
