@@ -6,7 +6,7 @@
 /*   By: dlerma-c <dlerma-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 19:13:33 by dlerma-c          #+#    #+#             */
-/*   Updated: 2021/11/08 14:00:23 by dlerma-c         ###   ########.fr       */
+/*   Updated: 2021/11/08 19:45:30 by dlerma-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@
 
 typedef struct s_objects
 {
-	int	collect;
-	int	character;
-	int	exit;
-	int	floor;
+	int	id;
+	int	posx;
+	int	posy;
+	int	**objs;
 }	t_objects;
 
 typedef struct s_map
@@ -34,15 +34,19 @@ typedef struct s_map
 	size_t		nrows;
 	size_t		nchars;
 	char		**file;
+	int			collect;
+	int			character;
+	int			exit;
 	t_objects	objects;
 }	t_map;
 
 int		check_argument(char *argv);
 void	check_map(int fd, t_map *map);
 void	save_map(int fd, t_map *map);
+void    run_map(t_map *map);
 //UTILS
 void	print_error(char *mssg);
 //OBJS
 void	init_objs(t_map *map);
-void	check_objects(char letter, t_objects *objects);
+void	check_objects(char letter, t_map *map);
 #endif

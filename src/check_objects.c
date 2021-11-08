@@ -6,7 +6,7 @@
 /*   By: dlerma-c <dlerma-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 13:57:12 by dlerma-c          #+#    #+#             */
-/*   Updated: 2021/11/08 13:59:26 by dlerma-c         ###   ########.fr       */
+/*   Updated: 2021/11/08 19:46:46 by dlerma-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,23 @@
 
 void	init_objs(t_map *map)
 {
-	map->objects.collect = 0;
-	map->objects.character = 0;
-	map->objects.exit = 0;
-	map->objects.floor = 0;
+	map->collect = 0;
+	map->character = 0;
+	map->exit = 0;
+	map->floo
 }
 
-void	check_objects(char letter, t_objects *objects)
+void	check_objects(char letter, t_map *map)
 {
 	if (letter == 'C')
-		objects->collect++;
+		map->collect++;
 	if (letter == 'P')
-		objects->character++;
+		map->character++;
 	if (letter == 'E')
-		objects->exit++;
-	if (letter == '0')
-		objects->floor++;
+		map->exit++;
+}
+
+void	save_position()
+{
+
 }

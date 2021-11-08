@@ -6,7 +6,7 @@
 /*   By: dlerma-c <dlerma-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 19:03:43 by dlerma-c          #+#    #+#             */
-/*   Updated: 2021/11/08 13:58:54 by dlerma-c         ###   ########.fr       */
+/*   Updated: 2021/11/08 19:43:36 by dlerma-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	objs_and_square(char *line, size_t len, t_map *map)
 		print_error("LOS MUROS NO SON VÁLIDOS\n");
 	while (line[i])
 	{
-		check_objects(line[i], &map->objects);
+		check_objects(line[i], map);
 		if (line[i] == '\n')
 			break ;
 		if (line [i] != '0' && line [i] != '1' && line [i] != 'C'
@@ -52,8 +52,8 @@ void	check_map(int fd, t_map *map)
 		i++;
 	}
 	map->nrows = i - 1;
-	if (map->objects.floor == 0 || map->objects.character != 1
-		|| map->objects.exit != 1 || map->objects.collect < 1)
+	if (map->character != 1 || map->exit != 1 
+		|| map->collect < 1)
 		print_error("HAS METIDO OBJETOS DE MAS\n");
 }
 
