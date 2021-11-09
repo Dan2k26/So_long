@@ -6,7 +6,7 @@
 /*   By: dlerma-c <dlerma-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 19:03:43 by dlerma-c          #+#    #+#             */
-/*   Updated: 2021/11/08 19:43:36 by dlerma-c         ###   ########.fr       */
+/*   Updated: 2021/11/09 16:42:33 by dlerma-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	check_map(int fd, t_map *map)
 		i++;
 	}
 	map->nrows = i - 1;
-	if (map->character != 1 || map->exit != 1 
+	if (map->character != 1 || map->exit != 1
 		|| map->collect < 1)
 		print_error("HAS METIDO OBJETOS DE MAS\n");
 }
@@ -74,20 +74,19 @@ int	check_argument(char *argv)
 void	save_map(int fd, t_map *map)
 {
 	char	*line;
-	char	**archive;
 	int		i;
-		
+
 	line = get_next_line(fd);
-	archive = malloc(map->nrows * sizeof(char *));
-	if (archive == NULL)
+	map->file = malloc(map->nrows * sizeof(char *));
+	if (map->file == NULL)
 		print_error("CALLOC ES NULO\n");
 	i = -1;
 	while (line)
 	{	
 		if (line != NULL)
 		{
-			archive[++i] = ft_strdup(line);
-			if (archive[i] == NULL)
+			map->file[++i] = ft_strdup(line);
+			if (map->file[i] == NULL)
 				print_error("ARCHIVE MAL\n");
 		}
 		free(line);
@@ -95,6 +94,7 @@ void	save_map(int fd, t_map *map)
 	}
 	i = -1;
 	while (++i < (int)map->nchars)
-		if (archive[0][i] != '1' || archive[map->nrows - 1][i] != '1')
+		if (map->file[0][i] != '1' || map->file[map->nrows - 1][i] != '1')
 			print_error("EL PRIMERO O EL ULTIMO\n");
+	save_objects(map);
 }

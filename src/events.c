@@ -1,39 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dlerma-c <dlerma-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/02 19:03:47 by dlerma-c          #+#    #+#             */
-/*   Updated: 2021/11/09 16:43:38 by dlerma-c         ###   ########.fr       */
+/*   Created: 2021/11/09 16:58:57 by dlerma-c          #+#    #+#             */
+/*   Updated: 2021/11/09 19:05:57 by dlerma-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include<so_long.h>
 
-void	check_leaks(void)
+static int	deal_key(int key, t_map *map)
 {
-	system("leaks -q so_long");
+	if (key == 53)
+	{
+		mlx_destroy_window(map->window.mlx_ptr, map->window.win_ptr);
+		exit(0);
+	}
+	if (key == 13)
+	{
+		printf("W");
+	}
+	if (key == 2)
+	{
+		printf("D");
+	}
+	if (key == 0)
+	{
+		printf("A");
+	}
+	if (key == 1)
+	{
+		printf("S");
+	}
+	printf("%d\n", key);
+	return(0);
 }
 
-int	main(int argc, char **argv)
+void	key_pressed(t_map *map)
 {
-	int		fd;
-	t_map	map;
-
-	atexit(check_leaks);
-	if (argc == 2)
-	{
-		fd = check_argument(argv[1]);
-		check_map(fd, &map);
-		close(fd);
-		fd = check_argument(argv[1]);
-		save_map(fd, &map);
-		close(fd);
-		run_map(&map);
-	}
-	else
-		print_error("ARGUMENTOS MAL INTRODUCIDOS\n");
-	return (0);
+	//(void) mlx_ptr;
+	mlx_key_hook (map->window.win_ptr, deal_key, map);
 }
