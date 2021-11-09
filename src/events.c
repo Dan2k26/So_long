@@ -6,7 +6,7 @@
 /*   By: dlerma-c <dlerma-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 16:58:57 by dlerma-c          #+#    #+#             */
-/*   Updated: 2021/11/09 19:05:57 by dlerma-c         ###   ########.fr       */
+/*   Updated: 2021/11/09 20:44:32 by dlerma-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ static int	deal_key(int key, t_map *map)
 	if (key == 13)
 	{
 		printf("W");
+
 	}
 	if (key == 2)
 	{
@@ -41,6 +42,5 @@ static int	deal_key(int key, t_map *map)
 
 void	key_pressed(t_map *map)
 {
-	//(void) mlx_ptr;
 	mlx_key_hook (map->window.win_ptr, deal_key, map);
 }

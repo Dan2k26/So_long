@@ -6,7 +6,7 @@
 #    By: dlerma-c <dlerma-c@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/08 17:21:07 by dlerma-c          #+#    #+#              #
-#    Updated: 2021/11/09 17:06:02 by dlerma-c         ###   ########.fr        #
+#    Updated: 2021/11/09 19:44:11 by dlerma-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ LDLIBS = -lft
 #··············································································#
 
 SRCS = main.c check_errors.c so_long_utils.c check_objects.c run_map.c \
-	events.c
+	events.c images.c
 OBJS_NAME = $(SRCS:%.c=%.o)
 OBJS = $(addprefix $(OBJ_PATH)/, $(OBJS_NAME))
 

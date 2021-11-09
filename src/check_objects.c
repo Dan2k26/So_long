@@ -6,7 +6,7 @@
 /*   By: dlerma-c <dlerma-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 13:57:12 by dlerma-c          #+#    #+#             */
-/*   Updated: 2021/11/09 16:42:51 by dlerma-c         ###   ########.fr       */
+/*   Updated: 2021/11/09 19:50:51 by dlerma-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ static size_t	objects_positions(t_map *map, size_t pos, int x, int y)
 		if (map->objects.objs[pos] == NULL)
 			print_error("NO SE HA GUARDADO OBJS\n");
 		map->objects.objs[pos][0] = id;
-		map->objects.objs[pos][1] = x;
-		map->objects.objs[pos][2] = y;
+		map->objects.objs[pos][1] = x * SZ;
+		map->objects.objs[pos][2] = y * SZ;
 		return (1);
 	}
 	return (0);
