@@ -6,7 +6,7 @@
 /*   By: dlerma-c <dlerma-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 19:13:33 by dlerma-c          #+#    #+#             */
-/*   Updated: 2021/11/09 20:47:18 by dlerma-c         ###   ########.fr       */
+/*   Updated: 2021/11/10 17:35:33 by dlerma-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,9 @@
 
 typedef struct s_objects
 {
-	// int	id;
-	// int	posx;
-	// int	posy;
-	int	**objs;
+	int	posx;
+	int	posy;
+	int	num_total;
 }	t_objects;
 
 typedef struct s_window
@@ -37,6 +36,9 @@ typedef struct s_window
 	void	*win_ptr;
 	void	*img_ptr_floor;
 	void	*img_ptr_character;
+	void	*img_ptr_wall;
+	void	*img_ptr_collect;
+	void	*img_ptr_exit;
 } t_window;
 
 typedef struct s_map
@@ -60,7 +62,6 @@ void	print_error(char *mssg);
 //OBJS
 void	init_objs(t_map *map);
 void	check_objects(char letter, t_map *map);
-void	save_objects(t_map *map);
 //EVENTS
 void	key_pressed(t_map *map);
 //IMAGES

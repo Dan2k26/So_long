@@ -6,7 +6,7 @@
 /*   By: dlerma-c <dlerma-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 19:03:43 by dlerma-c          #+#    #+#             */
-/*   Updated: 2021/11/09 16:42:33 by dlerma-c         ###   ########.fr       */
+/*   Updated: 2021/11/10 17:48:02 by dlerma-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,5 @@ void	save_map(int fd, t_map *map)
 	while (++i < (int)map->nchars)
 		if (map->file[0][i] != '1' || map->file[map->nrows - 1][i] != '1')
 			print_error("EL PRIMERO O EL ULTIMO\n");
-	save_objects(map);
+	map->objects.num_total = 2 + map->collect;
 }

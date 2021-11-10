@@ -6,7 +6,7 @@
 /*   By: dlerma-c <dlerma-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 19:03:47 by dlerma-c          #+#    #+#             */
-/*   Updated: 2021/11/09 16:43:38 by dlerma-c         ###   ########.fr       */
+/*   Updated: 2021/11/10 16:32:05 by dlerma-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 	int		fd;
 	t_map	map;
 
-	atexit(check_leaks);
+	//atexit(check_leaks);
 	if (argc == 2)
 	{
 		fd = check_argument(argv[1]);
