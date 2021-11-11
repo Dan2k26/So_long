@@ -6,7 +6,7 @@
 /*   By: dlerma-c <dlerma-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 19:13:33 by dlerma-c          #+#    #+#             */
-/*   Updated: 2021/11/11 17:52:08 by dlerma-c         ###   ########.fr       */
+/*   Updated: 2021/11/11 18:55:55 by dlerma-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	save_map(int fd, t_map *map);
 void	run_map(t_map *map);
 //UTILS
 void	print_error(char *mssg);
+void	print_moves(t_map map);
 //OBJS
 void	init_objs(t_map *map);
 void	check_objects(char letter, t_map *map);
