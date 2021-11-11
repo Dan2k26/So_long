@@ -6,7 +6,7 @@
 /*   By: dlerma-c <dlerma-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 19:13:33 by dlerma-c          #+#    #+#             */
-/*   Updated: 2021/11/10 17:35:33 by dlerma-c         ###   ########.fr       */
+/*   Updated: 2021/11/11 17:52:08 by dlerma-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ typedef struct s_objects
 	int	posx;
 	int	posy;
 	int	num_total;
+	int move;
+	int	items;
 }	t_objects;
 
 typedef struct s_window
