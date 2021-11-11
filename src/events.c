@@ -6,19 +6,14 @@
 /*   By: dlerma-c <dlerma-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 16:58:57 by dlerma-c          #+#    #+#             */
-/*   Updated: 2021/11/11 19:00:03 by dlerma-c         ###   ########.fr       */
+/*   Updated: 2021/11/11 19:05:26 by dlerma-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include<so_long.h>
 
-static int	change_position(t_map *map, int type)
+static void	change_position(t_map *map, int type)
 {
-	int	tempx;
-	int	tempy;
-
-	tempx = map->objects.posx;
-	tempy = map->objects.posy;
 	if (type == 0)
 		map->objects.posy = map->objects.posy - 1;
 	else if (type == 1)
@@ -27,6 +22,16 @@ static int	change_position(t_map *map, int type)
 		map->objects.posx = map->objects.posx - 1;
 	else if (type == 3)
 		map->objects.posy = map->objects.posy + 1;
+}
+
+static int	check_door(t_map *map, int type)
+{
+	int	tempx;
+	int	tempy;
+
+	tempx = map->objects.posx;
+	tempy = map->objects.posy;
+	change_position(map, type);
 	if (map->collect == map->objects.items
 		&& map->file[map->objects.posy][map->objects.posx] == 'E')
 	{
@@ -51,7 +56,7 @@ static int	move_character(t_map *map, int type)
 	mlx_put_image_to_window(map->window.mlx_ptr, map->window.win_ptr,
 		map->window.img_ptr_floor, map->objects.posx * SZ,
 		map->objects.posy * SZ);
-	boo = change_position(map, type);
+	boo = check_door(map, type);
 	mlx_put_image_to_window(map->window.mlx_ptr, map->window.win_ptr,
 		map->window.img_ptr_character, map->objects.posx * SZ,
 		map->objects.posy * SZ);

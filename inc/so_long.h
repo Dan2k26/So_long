@@ -6,7 +6,7 @@
 /*   By: dlerma-c <dlerma-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 19:13:33 by dlerma-c          #+#    #+#             */
-/*   Updated: 2021/11/11 18:55:55 by dlerma-c         ###   ########.fr       */
+/*   Updated: 2021/11/11 19:05:46 by dlerma-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_objects
 	int	posx;
 	int	posy;
 	int	num_total;
-	int move;
+	int	move;
 	int	items;
 }	t_objects;
 
@@ -41,7 +41,7 @@ typedef struct s_window
 	void	*img_ptr_wall;
 	void	*img_ptr_collect;
 	void	*img_ptr_exit;
-} t_window;
+}	t_window;
 
 typedef struct s_map
 {
