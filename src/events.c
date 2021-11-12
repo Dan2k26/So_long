@@ -6,7 +6,7 @@
 /*   By: dlerma-c <dlerma-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 16:58:57 by dlerma-c          #+#    #+#             */
-/*   Updated: 2021/11/11 19:05:26 by dlerma-c         ###   ########.fr       */
+/*   Updated: 2021/11/12 18:23:12 by dlerma-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,16 @@ static int	move_character(t_map *map, int type)
 	if (boo != 0)
 		print_moves(*map);
 	if (map->file[map->objects.posy][map->objects.posx] == 'C')
+	{
+		map->file[map->objects.posy][map->objects.posx] = '0';
 		return (1);
+	}
 	return (0);
 }
 
 static int	deal_key(int key, t_map *map)
 {
+	printf("--> NUM objs: %d  COLLECT: %d  ITEMS: %d\n", map->objects.num_total, map->collect, map->objects.items);
 	if (key == 53)
 	{
 		mlx_destroy_window(map->window.mlx_ptr, map->window.win_ptr);
