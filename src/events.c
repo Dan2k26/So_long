@@ -6,7 +6,7 @@
 /*   By: dlerma-c <dlerma-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 16:58:57 by dlerma-c          #+#    #+#             */
-/*   Updated: 2021/11/12 18:23:12 by dlerma-c         ###   ########.fr       */
+/*   Updated: 2021/12/08 21:52:12 by dlerma-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ static int	move_character(t_map *map, int type)
 
 static int	deal_key(int key, t_map *map)
 {
-	printf("--> NUM objs: %d  COLLECT: %d  ITEMS: %d\n", map->objects.num_total, map->collect, map->objects.items);
 	if (key == 53)
 	{
 		mlx_destroy_window(map->window.mlx_ptr, map->window.win_ptr);
@@ -97,4 +96,5 @@ static int	deal_key(int key, t_map *map)
 void	key_pressed(t_map *map)
 {
 	mlx_key_hook (map->window.win_ptr, deal_key, map);
+	mlx_hook(map->window.win_ptr, 17, 1L < 17, mouse_exit, map);
 }

@@ -6,7 +6,7 @@
 /*   By: dlerma-c <dlerma-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 19:03:39 by dlerma-c          #+#    #+#             */
-/*   Updated: 2021/11/11 18:55:05 by dlerma-c         ###   ########.fr       */
+/*   Updated: 2021/12/08 21:53:14 by dlerma-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,10 @@ void	print_moves(t_map map)
 	write(1, "MOVES: ", 7);
 	ft_putnbr_fd(map.objects.move, 1);
 	write(1, "\n", 1);
+}
+
+int	mouse_exit(void)
+{
+	exit(0);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: dlerma-c <dlerma-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 19:13:33 by dlerma-c          #+#    #+#             */
-/*   Updated: 2021/11/11 19:05:46 by dlerma-c         ###   ########.fr       */
+/*   Updated: 2021/12/08 21:53:16 by dlerma-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	run_map(t_map *map);
 //UTILS
 void	print_error(char *mssg);
 void	print_moves(t_map map);
+int		mouse_exit(void);
 //OBJS
 void	init_objs(t_map *map);
 void	check_objects(char letter, t_map *map);
